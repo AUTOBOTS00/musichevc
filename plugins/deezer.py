@@ -31,9 +31,6 @@ async def download_song(url):
 
 @Client.on_message(filters.text)
 async def deezer(_, message):
-    if len(message.command) < 2:
-        await message.reply_text("What's the song you want to download 🧐")
-        return
     text = message.text.split(None, 1)[1]
     query = text.replace(" ", "%20")
     m = await message.reply_text("Searching...")
