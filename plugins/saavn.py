@@ -6,20 +6,16 @@ from pyrogram import filters
 
 from pyrogram import Client
 
-def get_arg(message):
-    msg = message.text
-    msg = msg.replace(" ", "", 1) if msg[1] == " " else msg
-    split = msg[1:].replace("\n", " \n").split(" ")
-    if " ".join(split[1:]).strip() == "":
-        return ""
-    return " ".join(split[1:])
-
 
 @Client.on_message(filters.text)
 async def song(client, message):
     message.chat.id
     message.from_user["id"]
-    m = await message.reply_text("fetching datas from jiosaavn.com")
+    args = get_arg(message) + " " + "song"
+    if args.startswith(" "):
+        await message.reply("<b>What is the song you want?</b>")
+        return ""
+    m = await message.reply_text("Downloading...")
     try:
         r = requests.get(
             f"https://jevcplayerbot-saavndl.herokuapp.com/result/?query={args}"
