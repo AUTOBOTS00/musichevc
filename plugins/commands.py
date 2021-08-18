@@ -34,7 +34,7 @@ BUTTON1="📜 Source Code 📜"
 
 @Client.on_message(filters.command('start') & filters.private)
 async def start(client, message):
-    await message.reply_photo(photo=Config.START_IMG, caption=Config.START_MSG.format(message.from_user.mention),
+    await message.reply_photo(photo=START_IMG, caption="Hi ⁪⁬⁮ {},\nIam A Simple Mp3 Downloader Bot,\n\nSend me Any Songs name, I can help you with uploading that to TG".format(message.from_user.mention),
          reply_markup=InlineKeyboardMarkup(
             [
                 [
