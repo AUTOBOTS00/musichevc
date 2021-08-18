@@ -167,3 +167,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ]
             )
         )
+        except:
+            pass
+    elif query.data=="help":
+        buttons = [
+            [
+               InlineKeyboardButton('🧩 Source', url='https://github.com/shamilhabeebnelli/song-bot'),
+            ]
+            ]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.edit_message_text(
+            "Hi vrow",
+            reply_markup=reply_markup
+
+        )
