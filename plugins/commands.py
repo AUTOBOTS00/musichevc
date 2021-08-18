@@ -24,6 +24,7 @@ from pyrogram import Client, filters
 from utils import USERNAME, mp
 from config import Config
 
+START_IMG="https://telegra.ph/file/2a35fca576aa49de77c98.jpg"
 ABS="Developer"
 APPER="shamilhabeeb"
 OWNER="Owner"
