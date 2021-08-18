@@ -4,8 +4,9 @@ from random import randint
 import aiofiles
 import aiohttp
 from pyrogram import filters
-
-from pyrogram import Client
+from config import API_HASH, API_ID, BOT_TOKEN
+DTbot = Client("DTSongBot", bot_token=BOT_TOKEN, api_hash=API_HASH, api_id=API_ID,)
+import DTbot as app
 
 ARQ = "https://thearq.tech/"
 
@@ -29,7 +30,7 @@ async def download_song(url):
     return song_name
 
 
-@Client.on_message(filters.command("deezer"))
+@app.on_message(filters.command("deezer"))
 async def deezer(_, message):
     if len(message.command) < 2:
         await message.reply_text("What's the song you want to download 🧐")
