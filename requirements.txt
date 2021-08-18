@@ -9,3 +9,9 @@ youtube_search_python
 youtube_search
 wget
 requests
+
+aiohttp
+asyncio
+aiofiles
+OpenCC
+pytube
