@@ -60,11 +60,13 @@ def time_to_seconds(time):
 
 THUMB="bit.ly/thumbnil"
 
-@Client.on_message(filters.text)
+@Client.on_message(filters.command(['song']))
 def a(client, message):
-    query=message.text
+    query = ''
+    for i in message.command[1:]:
+        query += ' ' + str(i)
     print(query)
-    m = message.reply('fetching datas from m.youtube.com')
+    m = message.reply('`Searching... Please Wait...`')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
