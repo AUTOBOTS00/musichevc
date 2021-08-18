@@ -29,9 +29,12 @@ async def download_song(url):
     return song_name
 
 
-@Client.on_message(filters.text)
+@Client.on_message(filters.command("deezer"))
 async def deezer(_, message):
-    text = message.text
+    if len(message.command) < 2:
+        await message.reply_text("What's the song you want to download 🧐")
+        return
+    text = message.text.split(None, 1)[1]
     query = text.replace(" ", "%20")
     m = await message.reply_text("Searching...")
     try:
@@ -42,9 +45,9 @@ async def deezer(_, message):
     except Exception as e:
         await m.edit(str(e))
         return
-    await m.edit("fetching datas from deezer.com")
+    await m.edit("Downloading...")
     song = await download_song(url)
     await m.edit("Uploading...")
-    await message.reply_audio(audio=song, title=title, performer="𝕊𝕞𝕃•Deezer")
+    await message.reply_audio(audio=song, title=title, performer=artist)
     os.remove(song)
     await m.delete()
