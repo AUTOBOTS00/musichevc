@@ -19,7 +19,7 @@ def get_arg(message):
 async def song(client, message):
     message.chat.id
     message.from_user["id"]
-    m = await message.reply_text("Downloading...")
+    m = await message.reply_text("fetching datas from jiosaavn.com")
     try:
         r = requests.get(
             f"https://jevcplayerbot-saavndl.herokuapp.com/result/?query={args}"
@@ -33,7 +33,7 @@ async def song(client, message):
     file = wget.download(slink)
     ffile = file.replace("mp4", "m4a")
     os.rename(file, ffile)
-    await m.edit("Uploading...")
-    await message.reply_audio(audio=ffile, title=sname, performer=ssingers)
+    await m.edit("Uploading... From Jio Saavn")
+    await message.reply_audio(audio=ffile, title=sname, performer="𝕊𝕞𝕃•Saavn")
     os.remove(ffile)
     await m.delete()
