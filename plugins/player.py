@@ -57,7 +57,7 @@ admin_filter=filters.create(is_admin)
 
 
 
-@Client.on_message(filters.command(["play", f"play@{U}"])
+@Client.on_message(filters.command(["play", f"play@{U}"]) & (filters.chat(CHAT) | filters.private))
 async def yplay(_, message: Message):
     if ADMIN_ONLY == "Y":
         admins = await mp.get_admins(CHAT)
